@@ -16,3 +16,13 @@ python3 main.py
 ```
 Ingresar el nombre de un pais y presionar enter
 Por ejemplo: Mexico
+
+# App Project
+
+```sh
+git clone
+cd app
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 main.py
+```
