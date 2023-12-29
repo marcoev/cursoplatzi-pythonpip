@@ -2,6 +2,7 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 '''
 data = [
@@ -17,14 +18,23 @@ data = [
 '''
 
 def run():
-  data = read_csv.readCSV('population.csv')
+  ''' 
   #filtrar los datos para solo obtener el continente de Sudamerica
   data = list(filter(lambda item : item['Continent'] == 'South America', data))
   # Obtenemos una lista de paises
   countries = list(map(lambda item: item['Country'], data))
   # Obtenemos una lista del porcentaje de poblacion mundial
   percentages = list(map(lambda item: item['World Population Percentage'], data))
+  '''
+
+  df = pd.read_csv('population.csv')
+  df = df[df['Continent'] == 'Africa']
+  countries = df['Country'].values
+  percentages = df['World Population Percentage'].values
+
   charts.generatePieChart(countries, percentages)
+
+  data = read_csv.readCSV('population.csv')
 
   country = input('Tye country => ')
   print(country)
